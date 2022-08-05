@@ -16,3 +16,7 @@ A description of this package.
 **第三步** 设置案例运行配置
 ![fHA1gU](http://cdn.hocgin.top/file/fHA1gU.png)
 ![LnTbVU](http://cdn.hocgin.top/file/LnTbVU.png)
+
+**第四步** 启动项目
+1. 运行`SwiftHit`编译中间件
+2. 运行`Example`项目
