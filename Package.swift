@@ -25,15 +25,16 @@ let package = Package(
         .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
         .package(url: "https://github.com/bizz84/SwiftyStoreKit.git", .upToNextMajor(from: "0.16.4")),
         .package(url: "https://github.com/mxcl/PromiseKit.git", .upToNextMajor(from: "6.17.1")),
+        .package(url: "https://github.com/Flight-School/AnyCodable", from: "0.6.0"),
         .package(url: "https://github.com/SwiftUIX/SwiftUIX.git", .upToNextMajor(from: "0.1.2"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(name: "SwiftHit", dependencies: []),
+        .target(name: "SwiftHit", dependencies: ["CoreHit", "UIHit"]),
         .testTarget(name: "SwiftHitTests", dependencies: ["SwiftHit"]),
         
-        .target(name: "CoreHit", dependencies: []),
+        .target(name: "CoreHit", dependencies: ["AnyCodable"]),
         .testTarget(name: "CoreHitTests", dependencies: ["CoreHit"]),
         
         .target(name: "UIHit", dependencies: ["CoreHit",

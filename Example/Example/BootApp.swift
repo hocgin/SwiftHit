@@ -7,19 +7,23 @@
 
 import SwiftUI
 import SwiftHit
+import CoreHit
+import UIHit
 
 @main
-struct ExampleApp: App {
+struct BootApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationHitView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
     
     init() {
         print(SwiftHit.text)
+        print(CoreHit.text)
+        print(UIHit.text)
     }
 }
