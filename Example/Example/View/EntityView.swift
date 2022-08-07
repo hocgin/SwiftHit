@@ -9,7 +9,7 @@ import SwiftUI
 import CoreHit
 
 struct EntityView: View {
-    var entity: JSONObject
+    var entity: Codable
     
     var body: some View {
         Text("\(entity.toJSONString())")

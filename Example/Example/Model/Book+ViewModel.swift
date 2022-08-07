@@ -9,7 +9,7 @@ import Foundation
 import CoreHit
 
 
-struct BookViewModel: Identifiable, JSONObject, Codable {
+struct BookViewModel: Identifiable, Codable {
     var id = UUID()
     var timestamp: Date
 //    public init(from decoder: Decoder) throws {
