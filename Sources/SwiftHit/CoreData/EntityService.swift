@@ -69,7 +69,7 @@ extension EntityModel {
 
 
 // https://itisjoe.gitbooks.io/swiftgo/content/database/coredata.html
-public class EntityService<T: EntityModel> {
+open class EntityService<T: EntityModel> {
     var viewContext: NSManagedObjectContext
 
     public init(context: DataContext) {

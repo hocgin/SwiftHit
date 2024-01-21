@@ -33,7 +33,7 @@ public typealias Completion<T> = (_ data: T?, _ error: Error?, _ resp: AFDataRes
 // https://github.com/tristanhimmelman/ObjectMapper
 // https://danielsaidi.com/blog/2018/12/27/alamofire-objectmapper
 // https://medium.com/@tomasparizek/alamofire-objectmapper-must-have-combo-for-any-ios-developer-d5c25623562
-public class RequestService {
+open class RequestService {
     public init(context: ApiContext) {
         self.context = context
     }
