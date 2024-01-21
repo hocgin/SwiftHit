@@ -1,21 +1,21 @@
 {
   "pins" : [
     {
-      "identity" : "anycodable",
+      "identity" : "alamofire",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Flight-School/AnyCodable",
+      "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
-        "revision" : "f9fda69a7b704d46fb5123005f2f7e43dbb8a0fa",
-        "version" : "0.6.5"
+        "revision" : "3dc6a42c7727c49bf26508e29b0a0b35f9c7e1ad",
+        "version" : "5.8.1"
       }
     },
     {
-      "identity" : "promisekit",
+      "identity" : "smartcodable",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mxcl/PromiseKit.git",
+      "location" : "https://github.com/hocgin/SmartCodable",
       "state" : {
-        "revision" : "c946b7561fbe11379a874e59faa2c5f8077ae0e1",
-        "version" : "6.17.1"
+        "revision" : "f9adfef48a3e0a72a7a0d4ef015f475c92439507",
+        "version" : "2.2.3"
       }
     },
     {
@@ -28,21 +28,21 @@
       }
     },
     {
-      "identity" : "swiftuix",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftUIX/SwiftUIX.git",
-      "state" : {
-        "revision" : "889c781539cdd1e6a1111472c711082522aa35c6",
-        "version" : "0.1.2"
-      }
-    },
-    {
       "identity" : "swiftystorekit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/bizz84/SwiftyStoreKit.git",
       "state" : {
         "revision" : "9ce911639680113dac9b554d6243e406a9758ebe",
         "version" : "0.16.4"
+      }
+    },
+    {
+      "identity" : "toast-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BastiaanJansen/toast-swift",
+      "state" : {
+        "revision" : "823bb93e569bc3cf8b542e658a11b98e0b3127c8",
+        "version" : "2.1.1"
       }
     }
   ],

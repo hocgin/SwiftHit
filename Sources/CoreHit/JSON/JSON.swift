@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by hocgin on 2022/8/7.
 //
@@ -13,7 +13,7 @@ public extension Encodable {
         do {
             let data = try JSONEncoder().encode(self)
             return String(data: data, encoding: .utf8) ?? ""
-        }catch {
+        } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }

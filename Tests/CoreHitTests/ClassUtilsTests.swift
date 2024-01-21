@@ -6,18 +6,18 @@
 //
 
 import XCTest
-@testable import CoreHit
+@testable import SwiftHit
 
 final class ClassUtilsTests: XCTestCase {
     
     
     func testHasType() throws {
-        assert(ClassUtils.hasType(ExampleStruct(), ofType: ExampleStruct.self))
+        assert(Utility.hasType(ExampleStruct(), ofType: ExampleStruct.self))
     }
     
     func testToString() throws {
         let entity = ExampleStruct()
-        assert(ClassUtils.toString(entity) == "\(type(of: entity))")
+        assert(Utility.toString(entity) == "\(type(of: entity))")
     }
     
     
