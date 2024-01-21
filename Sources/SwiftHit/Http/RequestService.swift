@@ -15,10 +15,9 @@ public protocol ApiEnvironment {
 
 public class ApiContext {
     var environment: ApiEnvironment
-    init(environment: ApiEnvironment) {
+    public init(environment: ApiEnvironment) {
         self.environment = environment
     }
-
 }
 
 public struct RequestOptions {
@@ -70,7 +69,7 @@ public class RequestService {
     }
 
     public func useRequest<T: SmartCodable>(at route: String, _ options: RequestOptions,
-                                     completion: @escaping Completion<T>)
+                                            completion: @escaping Completion<T>)
     {
         request(at: route, options).response { resp in
             switch resp.result {
