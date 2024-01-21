@@ -13,6 +13,7 @@
 		573914BA289FA1F9004842B0 /* DatabaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573914B9289FA1F9004842B0 /* DatabaseView.swift */; };
 		573914C0289FAB71004842B0 /* NetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573914BF289FAB71004842B0 /* NetView.swift */; };
 		573914C2289FAC0E004842B0 /* EntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573914C1289FAC0E004842B0 /* EntityView.swift */; };
+		577BFBE22B5D03BC007FAC3E /* SwiftHit in Frameworks */ = {isa = PBXBuildFile; productRef = 577BFBE12B5D03BC007FAC3E /* SwiftHit */; };
 		57A6B5E72879C8DE001D100F /* BootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A6B5E62879C8DE001D100F /* BootApp.swift */; };
 		57A6B5EB2879C8E0001D100F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A6B5EA2879C8E0001D100F /* Assets.xcassets */; };
 		57A6B5EE2879C8E0001D100F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A6B5ED2879C8E0001D100F /* Preview Assets.xcassets */; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				577BFBE22B5D03BC007FAC3E /* SwiftHit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +201,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
+				577BFBE12B5D03BC007FAC3E /* SwiftHit */,
 			);
 			productName = Example;
 			productReference = 57A6B5E32879C8DE001D100F /* Example.app */;
@@ -273,6 +276,7 @@
 			);
 			mainGroup = 57A6B5DA2879C8DE001D100F;
 			packageReferences = (
+				577BFBE02B5D03BC007FAC3E /* XCRemoteSwiftPackageReference "SwiftHit" */,
 			);
 			productRefGroup = 57A6B5E42879C8DE001D100F /* Products */;
 			projectDirPath = "";
@@ -651,6 +655,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		577BFBE02B5D03BC007FAC3E /* XCRemoteSwiftPackageReference "SwiftHit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hocgin/SwiftHit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		577BFBE12B5D03BC007FAC3E /* SwiftHit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 577BFBE02B5D03BC007FAC3E /* XCRemoteSwiftPackageReference "SwiftHit" */;
+			productName = SwiftHit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		57A6B5F12879C8E0001D100F /* Example.xcdatamodeld */ = {
