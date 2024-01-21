@@ -56,17 +56,16 @@ extension EntityModel {
         return String(describing: self)
     }
 
-    public func save() {
+    func save() {
         let viewCxt = self.managedObjectContext
         try? viewCxt?.save()
     }
 
-    public func delete() {
+    func delete() {
         let viewCxt = self.managedObjectContext
         try? viewCxt?.delete(self)
     }
 }
-
 
 // https://itisjoe.gitbooks.io/swiftgo/content/database/coredata.html
 open class EntityService<T: EntityModel> {
