@@ -8,16 +8,16 @@
 import CoreData
 import Foundation
 
-protocol DataEnvironment {
+public protocol DataEnvironment {
     var database: String { get }
 }
 
-class DataContext {
+public class DataContext {
     var environment: DataEnvironment
     var inMemory = false
     var container: NSPersistentContainer
     var viewContext: NSManagedObjectContext
-    init(env: DataEnvironment) {
+    public init(env: DataEnvironment) {
         self.environment = env
 
         let name = self.environment.database
@@ -49,19 +49,19 @@ class DataContext {
     }
 }
 
-typealias EntityModel = NSManagedObject
+public typealias EntityModel = NSManagedObject
 
 extension EntityModel {
     static func getType() -> String {
         return String(describing: self)
     }
 
-    func save() {
+    public func save() {
         let viewCxt = self.managedObjectContext
         try? viewCxt?.save()
     }
 
-    func delete() {
+    public func delete() {
         let viewCxt = self.managedObjectContext
         try? viewCxt?.delete(self)
     }
@@ -69,14 +69,14 @@ extension EntityModel {
 
 
 // https://itisjoe.gitbooks.io/swiftgo/content/database/coredata.html
-class EntityService<T: EntityModel> {
+public class EntityService<T: EntityModel> {
     var viewContext: NSManagedObjectContext
 
-    init(context: DataContext) {
+    public init(context: DataContext) {
         self.viewContext = context.viewContext
     }
 
-    func insertNewObject() -> T {
+    public func insertNewObject() -> T {
         let entityName = T.getType()
         return try! NSEntityDescription.insertNewObject(forEntityName: entityName, into: self.viewContext) as! T
     }
@@ -84,7 +84,7 @@ class EntityService<T: EntityModel> {
     /**
      查询
       */
-    func selectList() -> [T] {
+    public func selectList() -> [T] {
         let entityName = T.getType()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         return try! self.viewContext.fetch(request) as! [T]

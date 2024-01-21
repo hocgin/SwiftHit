@@ -8,6 +8,6 @@
 import Foundation
 
 
-struct ThemeStyle {
+public struct ThemeStyle {
     
 }

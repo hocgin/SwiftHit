@@ -9,11 +9,11 @@ import Alamofire
 import Foundation
 import SmartCodable
 
-protocol ApiEnvironment {
+public protocol ApiEnvironment {
     var url: String { get }
 }
 
-class ApiContext {
+public class ApiContext {
     var environment: ApiEnvironment
     init(environment: ApiEnvironment) {
         self.environment = environment
@@ -21,44 +21,44 @@ class ApiContext {
 
 }
 
-struct Options {
+public struct RequestOptions {
     var headers: HTTPHeaders?
     var body: Parameters? = nil
     var method: HTTPMethod?
     var encoding: ParameterEncoding?
 }
 
-typealias Completion<T> = (_ data: T?, _ error: Error?, _ resp: AFDataResponse<Data?>) -> Void
+public typealias Completion<T> = (_ data: T?, _ error: Error?, _ resp: AFDataResponse<Data?>) -> Void
 
 // https://github.com/intsig171/SmartCodable
 // https://github.com/tristanhimmelman/ObjectMapper
 // https://danielsaidi.com/blog/2018/12/27/alamofire-objectmapper
 // https://medium.com/@tomasparizek/alamofire-objectmapper-must-have-combo-for-any-ios-developer-d5c25623562
-class RequestService {
-    init(context: ApiContext) {
+public class RequestService {
+    public init(context: ApiContext) {
         self.context = context
     }
 
-    var context: ApiContext
+    public var context: ApiContext
 
-    func get(at route: String) -> DataRequest {
-        let options = Options(method: .get, encoding: URLEncoding.default)
+    public func get(at route: String) -> DataRequest {
+        let options = RequestOptions(method: .get, encoding: URLEncoding.default)
         return request(at: route, options)
     }
 
-    func post(at route: String, _ options: inout Options) -> DataRequest {
+    public func post(at route: String, _ options: inout RequestOptions) -> DataRequest {
         options.encoding = options.encoding ?? JSONEncoding.default
         options.method = options.method ?? HTTPMethod.post
         return request(at: route, options)
     }
 
-    func put(at route: String, _ options: inout Options) -> DataRequest {
+    public func put(at route: String, _ options: inout RequestOptions) -> DataRequest {
         options.encoding = options.encoding ?? JSONEncoding.default
         options.method = options.method ?? HTTPMethod.put
         return request(at: route, options)
     }
 
-    func request(at route: String, _ options: Options) -> DataRequest {
+    public func request(at route: String, _ options: RequestOptions) -> DataRequest {
         let url = url(route)
         let method = options.method!
         let params = options.body ?? [:]
@@ -69,7 +69,7 @@ class RequestService {
         return AF.request(url, method: method, parameters: params, encoding: encoding, headers: headers).validate()
     }
 
-    func useRequest<T: SmartCodable>(at route: String, _ options: Options,
+    public func useRequest<T: SmartCodable>(at route: String, _ options: RequestOptions,
                                      completion: @escaping Completion<T>)
     {
         request(at: route, options).response { resp in
@@ -82,7 +82,7 @@ class RequestService {
         }
     }
 
-    func useRequest<T: SmartCodable>(at route: String, _ options: Options) async throws -> T {
+    public func useRequest<T: SmartCodable>(at route: String, _ options: RequestOptions) async throws -> T {
         return try await withCheckedContinuation { continuation in
             useRequest(at: route, options) { (result: T?, error: Error?, _) in
                 if error != nil {
@@ -94,7 +94,7 @@ class RequestService {
         }
     }
 
-    func useGet<T: SmartCodable>(at route: String) async throws -> T {
+    public func useGet<T: SmartCodable>(at route: String) async throws -> T {
         return try await withCheckedContinuation { continuation in
             useGet(at: route) { (result: T?, error: Error?, _) in
                 if error != nil {
@@ -106,18 +106,18 @@ class RequestService {
         }
     }
 
-    func useGet<T: SmartCodable>(at route: String, completion: @escaping Completion<T>) {
-        let options = Options(method: .get, encoding: URLEncoding.default)
+    public func useGet<T: SmartCodable>(at route: String, completion: @escaping Completion<T>) {
+        let options = RequestOptions(method: .get, encoding: URLEncoding.default)
         useRequest(at: route, options, completion: completion)
     }
 
-    func usePost<T: SmartCodable>(at route: String, _ options: inout Options, completion: @escaping Completion<T>) {
+    public func usePost<T: SmartCodable>(at route: String, _ options: inout RequestOptions, completion: @escaping Completion<T>) {
         options.encoding = options.encoding ?? JSONEncoding.default
         options.method = options.method ?? HTTPMethod.post
         useRequest(at: route, options, completion: completion)
     }
 
-    func usePost<T: SmartCodable>(at route: String, _ options: inout Options) async throws -> T {
+    public func usePost<T: SmartCodable>(at route: String, _ options: inout RequestOptions) async throws -> T {
         return try await withCheckedContinuation { continuation in
             usePost(at: route, &options) { (result: T?, error: Error?, _) in
                 if error != nil {
@@ -129,13 +129,13 @@ class RequestService {
         }
     }
 
-    func usePut<T: SmartCodable>(at route: String, _ options: inout Options, completion: @escaping Completion<T>) {
+    public func usePut<T: SmartCodable>(at route: String, _ options: inout RequestOptions, completion: @escaping Completion<T>) {
         options.encoding = options.encoding ?? JSONEncoding.default
         options.method = options.method ?? HTTPMethod.put
         useRequest(at: route, options, completion: completion)
     }
 
-    func usePut<T: SmartCodable>(at route: String, _ options: inout Options) async throws -> T {
+    public func usePut<T: SmartCodable>(at route: String, _ options: inout RequestOptions) async throws -> T {
         return try await withCheckedContinuation { continuation in
             usePut(at: route, &options) { (result: T?, error: Error?, _) in
                 if error != nil {

@@ -9,7 +9,7 @@ import Foundation
 import SmartCodable
 
 public class Utility {
-    class func classNameAsString(_ obj: Any) -> String {
+    public static func classNameAsString(_ obj: Any) -> String {
         // prints more readable results for dictionaries, arrays, Int, etc
         return String(describing: type(of: obj))
     }
